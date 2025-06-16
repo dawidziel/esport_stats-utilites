@@ -1,0 +1,64 @@
+# .gitignore for Bayes eSports Data Project
+
+### Configuration and Secret Files ###
+config.py
+**/data/googleCreds.json
+**/data/response.json
+**/data/*.json
+**/data/tokens/
+
+### Temporary Files ###
+**/temp/
+**/temp/**
+temp/
+*.zip
+dump.json
+
+### Python Cache Files ###
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+.hypothesis/
+
+### Data Files ###
+**/data/champion_names_df.csv
+**/data/sql_errors.csv
+**/data/faulty_roles_*.csv
+*.csv
+
+### Database Files ###
+*.db
+*.sqlite
+*.sqlite3
+
+### IDE and Editor Files ###
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+
+### Environment Files ###
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+### Build and Distribution Files ###
+dist/
+build/
+*.egg-info/
+*data/
+### Logs ###
+logs/
+*.log
+npm-debug.log*
