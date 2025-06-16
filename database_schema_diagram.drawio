@@ -1,0 +1,101 @@
+<mxfile host="app.diagrams.net" modified="2024-01-15T10:00:00.000Z" agent="5.0" etag="abc123" version="22.1.16">
+  <diagram name="eSports Database Schema" id="schema">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Header -->
+        <mxCell id="header" value="eSports Match Data Database Schema&#xa;🔑 Primary Key | 🔗 Foreign Key | Two PostgreSQL databases: OFFICIAL_GAMES &amp; SCRIMS" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="500" y="10" width="800" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Core Tables Section -->
+        <mxCell id="core_label" value="CORE TABLES" style="text;html=1;strokeColor=none;fillColor=#f8f8f8;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="200" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- player_stats table -->
+        <mxCell id="player_stats" value="player_stats&#xa;🔑 live_data_player_urn (VARCHAR)&#xa;🔗 live_data_match_urn (VARCHAR)&#xa;🔗 live_data_team_urn (VARCHAR)&#xa;🔗 league_id (VARCHAR)&#xa;esports_game_id (VARCHAR)&#xa;date (TIMESTAMP)&#xa;patch (FLOAT)&#xa;summoner_name (VARCHAR)&#xa;champion_name (VARCHAR)&#xa;role (VARCHAR)&#xa;side (VARCHAR)&#xa;team_name (VARCHAR)&#xa;result (INTEGER)&#xa;game_time (FLOAT)&#xa;first_blood_killer (INTEGER)&#xa;lvl6_timer (FLOAT)&#xa;cs, cs_per_minute (INT/FLOAT)&#xa;gold_share, damage_share (FLOAT)&#xa;kills, deaths, assists (INTEGER)&#xa;support_proximity (FLOAT)&#xa;jungle_proximity (FLOAT)&#xa;+ 8min/14min stats (VARIOUS)" style="verticalAlign=top;align=left;overflow=fill;fontSize=11;fontFamily=Helvetica;html=1;strokeColor=#9673a6;fillColor=#e1d5e7;" vertex="1" parent="1">
+          <mxGeometry x="40" y="120" width="280" height="480" as="geometry" />
+        </mxCell>
+
+        <!-- team_stats table -->
+        <mxCell id="team_stats" value="team_stats&#xa;🔑 live_data_team_urn (VARCHAR)&#xa;🔗 live_data_match_urn (VARCHAR)&#xa;🔗 league_id (VARCHAR)&#xa;patch (FLOAT)&#xa;team_name (VARCHAR)&#xa;enemy_team_name (VARCHAR)&#xa;side (VARCHAR)&#xa;result (INTEGER)&#xa;game_time (FLOAT)&#xa;first_blood (INTEGER)&#xa;gold_diff (INTEGER)&#xa;gold_spent_diff (INTEGER)&#xa;resource_percent (FLOAT)&#xa;first_drake (INTEGER)&#xa;drake_kills (INTEGER)&#xa;elder_drake_kills (INTEGER)&#xa;first_herald (INTEGER)&#xa;herald_kills (INTEGER)&#xa;first_baron (INTEGER)&#xa;baron_kills (INTEGER)&#xa;first_tower (INTEGER)&#xa;first_mid_tower (INTEGER)&#xa;first_to_three_towers (INTEGER)&#xa;turrets_taken (INTEGER)&#xa;turret_plates_taken (INTEGER)" style="verticalAlign=top;align=left;overflow=fill;fontSize=11;fontFamily=Helvetica;html=1;strokeColor=#82b366;fillColor=#d5e8d4;" vertex="1" parent="1">
+          <mxGeometry x="360" y="120" width="260" height="480" as="geometry" />
+        </mxCell>
+
+        <!-- drafts table -->
+        <mxCell id="drafts" value="drafts&#xa;🔑 live_data_match_urn (VARCHAR)&#xa;patch (FLOAT)&#xa;date (TIMESTAMP)&#xa;blue_team_urn (VARCHAR)&#xa;red_team_urn (VARCHAR)&#xa;blue_team_name (VARCHAR)&#xa;red_team_name (VARCHAR)&#xa;winner_team (INTEGER)&#xa;rolf_urn (VARCHAR) [S3 replay]&#xa;&#xa;BANS:&#xa;bb1, rb1, bb2, rb2, bb3 (VARCHAR)&#xa;rb3, rb4, bb4, rb5, bb5 (VARCHAR)&#xa;&#xa;PICKS:&#xa;b1, r1, r2, b2, b3 (VARCHAR)&#xa;r3, r4, b4, b5, r5 (VARCHAR)&#xa;&#xa;ROLES:&#xa;b1_role...r5_role (VARCHAR)" style="verticalAlign=top;align=left;overflow=fill;fontSize=11;fontFamily=Helvetica;html=1;strokeColor=#d6b656;fillColor=#fff2cc;" vertex="1" parent="1">
+          <mxGeometry x="660" y="120" width="260" height="350" as="geometry" />
+        </mxCell>
+
+        <!-- Build Tables Section -->
+        <mxCell id="build_label" value="PLAYER BUILD TABLES" style="text;html=1;strokeColor=none;fillColor=#f8f8f8;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="960" y="80" width="250" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- items table -->
+        <mxCell id="items" value="items&#xa;🔑🔗 live_data_match_urn (VARCHAR)&#xa;🔑🔗 live_data_player_urn (VARCHAR)&#xa;item_0 (INTEGER)&#xa;item_1 (INTEGER)&#xa;item_2 (INTEGER)&#xa;item_3 (INTEGER)&#xa;item_4 (INTEGER)&#xa;item_5 (INTEGER)&#xa;item_0_timer...item_5_timer (FLOAT)&#xa;trinket (INTEGER)" style="verticalAlign=top;align=left;overflow=fill;fontSize=11;fontFamily=Helvetica;html=1;strokeColor=#9673a6;fillColor=#e1d5e7;" vertex="1" parent="1">
+          <mxGeometry x="960" y="120" width="240" height="200" as="geometry" />
+        </mxCell>
+
+        <!-- runes table -->
+        <mxCell id="runes" value="runes&#xa;🔑🔗 live_data_match_urn (VARCHAR)&#xa;🔑🔗 live_data_player_urn (VARCHAR)&#xa;rune0 (INTEGER)&#xa;rune0_perk (INTEGER)&#xa;rune0_var1 (INTEGER)&#xa;rune0_var2 (INTEGER)&#xa;rune0_var3 (INTEGER)&#xa;...&#xa;rune5 (INTEGER)&#xa;rune5_perk (INTEGER)&#xa;rune5_var1...rune5_var3 (INTEGER)" style="verticalAlign=top;align=left;overflow=fill;fontSize=11;fontFamily=Helvetica;html=1;strokeColor=#9673a6;fillColor=#e1d5e7;" vertex="1" parent="1">
+          <mxGeometry x="960" y="340" width="240" height="220" as="geometry" />
+        </mxCell>
+
+        <!-- Position and Event Tables Section -->
+        <mxCell id="position_label" value="POSITION &amp; EVENT TABLES" style="text;html=1;strokeColor=none;fillColor=#f8f8f8;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="640" width="300" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- proximity_timeline table -->
+        <mxCell id="proximity_timeline" value="proximity_timeline&#xa;🔗 live_data_match_urn (VARCHAR)&#xa;🔗 live_data_player_urn (VARCHAR)&#xa;time (INTEGER)&#xa;live_data_team_urn (VARCHAR)&#xa;side (VARCHAR)&#xa;role (VARCHAR)&#xa;player_location_x (FLOAT)&#xa;player_location_y (FLOAT)&#xa;support (INTEGER)&#xa;jungle (INTEGER)" style="verticalAlign=top;align=left;overflow=fill;fontSize=11;fontFamily=Helvetica;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;" vertex="1" parent="1">
+          <mxGeometry x="40" y="680" width="240" height="200" as="geometry" />
+        </mxCell>
+
+        <!-- event_positions table -->
+        <mxCell id="event_positions" value="event_positions&#xa;🔗 live_data_match_urn (VARCHAR)&#xa;🔗 live_data_player_urn (VARCHAR)&#xa;time (INTEGER)&#xa;live_data_team_urn (VARCHAR)&#xa;side (VARCHAR)&#xa;champion_name (VARCHAR)&#xa;alive (INTEGER)&#xa;player_location_x (FLOAT)&#xa;player_location_y (FLOAT)&#xa;🔗 objective_id (VARCHAR)" style="verticalAlign=top;align=left;overflow=fill;fontSize=11;fontFamily=Helvetica;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;" vertex="1" parent="1">
+          <mxGeometry x="300" y="680" width="240" height="200" as="geometry" />
+        </mxCell>
+
+        <!-- events table -->
+        <mxCell id="events" value="events&#xa;🔗 live_data_match_urn (VARCHAR)&#xa;🔑 objective_id (VARCHAR)&#xa;game_time (INTEGER)&#xa;objective_name (VARCHAR)&#xa;objective_type (VARCHAR)&#xa;objective_nr (INTEGER)&#xa;killer_team_urn (VARCHAR)&#xa;position_x (FLOAT)&#xa;position_y (FLOAT)&#xa;blue_gold_spent (INTEGER)&#xa;red_gold_spent (INTEGER)" style="verticalAlign=top;align=left;overflow=fill;fontSize=11;fontFamily=Helvetica;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;" vertex="1" parent="1">
+          <mxGeometry x="560" y="680" width="240" height="200" as="geometry" />
+        </mxCell>
+
+        <!-- wards table -->
+        <mxCell id="wards" value="wards&#xa;🔗 live_data_match_urn (VARCHAR)&#xa;game_time (INTEGER)&#xa;action (VARCHAR)&#xa;ward_type (VARCHAR)&#xa;placer_urn (VARCHAR)&#xa;placer_team_urn (VARCHAR)&#xa;position_x (FLOAT)&#xa;position_y (FLOAT)" style="verticalAlign=top;align=left;overflow=fill;fontSize=11;fontFamily=Helvetica;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;" vertex="1" parent="1">
+          <mxGeometry x="820" y="680" width="200" height="160" as="geometry" />
+        </mxCell>
+
+        <!-- Support Tables Section -->
+        <mxCell id="support_label" value="SUPPORT TABLES" style="text;html=1;strokeColor=none;fillColor=#f8f8f8;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="1240" y="80" width="200" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- player_info table -->
+        <mxCell id="player_info" value="player_info&#xa;🔑 player_id (VARCHAR)&#xa;id (VARCHAR)&#xa;player (VARCHAR)&#xa;name (VARCHAR)&#xa;role (VARCHAR)&#xa;team (VARCHAR)&#xa;residency (VARCHAR)&#xa;lolpros (VARCHAR)" style="verticalAlign=top;align=left;overflow=fill;fontSize=11;fontFamily=Helvetica;html=1;strokeColor=#b85450;fillColor=#f8cecc;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="120" width="200" height="160" as="geometry" />
+        </mxCell>
+
+        <!-- league_info table -->
+        <mxCell id="league_info" value="league_info&#xa;🔑 id (VARCHAR)&#xa;name (VARCHAR)&#xa;timeline_bool (BOOLEAN)" style="verticalAlign=top;align=left;overflow=fill;fontSize=11;fontFamily=Helvetica;html=1;strokeColor=#b85450;fillColor=#f8cecc;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="300" width="200" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- games_with_error table -->
+        <mxCell id="games_with_error" value="games_with_error&#xa;match_id (VARCHAR)&#xa;summoner_name (VARCHAR)&#xa;live_data_player_urn (VARCHAR)&#xa;league_id (VARCHAR)" style="verticalAlign=top;align=left;overflow=fill;fontSize=11;fontFamily=Helvetica;html=1;strokeColor=#b85450;fillColor=#f8cecc;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="400" width="200" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Database Info Box -->
+        <mxCell id="db_info" value="DATABASE ARCHITECTURE&#xa;&#xa;• Two separate PostgreSQL databases&#xa;• OFFICIAL_GAMES: Professional matches&#xa;• SCRIMS: Practice matches&#xa;• Identical schemas in both databases&#xa;• Data sourced from Bayes API&#xa;• Replay files stored in S3 (Contabo)&#xa;• Player role mapping via Leaguepedia API" style="verticalAlign=top;align=left;overflow=fill;fontSize=11;fontFamily=Helvetica;html=1;strokeColor=#666666;fillColor=#f5f5f5;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="530" width="280" height="180" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
