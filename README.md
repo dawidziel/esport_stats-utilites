@@ -10,7 +10,7 @@ The system uses **two separate PostgreSQL databases** with identical schemas:
 
 ### Database Schema Overview
 
-📊 **[View Database Schema Diagram](database_schema_diagram.drawio)** - Open with [draw.io](https://app.diagrams.net)
+📊 **[View Database Schema Diagram](diagrams/database_scheme.drawio.png)**
 
 #### Core Tables
 

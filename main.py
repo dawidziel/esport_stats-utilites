@@ -11,7 +11,6 @@ from config import *
 import sys
 
 
-# dodaj tabelę z jgl pathingiem
 start = time.time()
 try:
     mode = sys.argv[1]
