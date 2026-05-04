@@ -39,9 +39,15 @@ class ChessGame:
     # ------------------------------------------------------------------
 
     def display_board(self):
-        ranks = "87654321"
-        files = "a b c d e f g h"
-        lines = str(self.board).split("\n")
+        # Flip the board so each player always sees their own pieces at the bottom
+        if self.is_white:
+            ranks = "87654321"
+            files = "a b c d e f g h"
+            lines = str(self.board).split("\n")
+        else:
+            ranks = "12345678"
+            files = "h g f e d c b a"
+            lines = str(self.board.transform(chess.flip_vertical).transform(chess.flip_horizontal)).split("\n")
         print()
         for i, line in enumerate(lines):
             print("  {}  {}".format(ranks[i], line))
